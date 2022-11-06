@@ -11,11 +11,11 @@
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <Description>An buffer of bytes implemented internally as immutable array ReadOnlyMemory&lt;byte&gt;</Description>
     <Company>MetaFac</Company>
-    <Product>Types</Product>
+    <Product>Memory</Product>
     <PackageLicenseUrl></PackageLicenseUrl>
     <Authors>MetaFac Contributors</Authors>
-    <PackageProjectUrl>https://dev.azure.com/LabApps21/LAP</PackageProjectUrl>
-    <RepositoryUrl>https://dev.azure.com/LabApps21/LAP/_git/Types</RepositoryUrl>
+    <PackageProjectUrl>https://dev.azure.com/MetaFac/OSR</PackageProjectUrl>
+    <RepositoryUrl>https://dev.azure.com/MetaFac/OSR/_git/Memory</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <SignAssembly>true</SignAssembly>
