@@ -6,7 +6,7 @@ using System.Linq;
 namespace MetaFac.Memory
 {
     /// <summary>
-    /// An immutable string of UTF8 characters (bytes).
+    /// A reference type that wraps a ReadOnlyMemory<byte> buffer.
     /// </summary>
     public sealed class Octets : IEnumerable<byte>, IReadOnlyList<byte>, IEquatable<Octets?>
     {
@@ -15,11 +15,23 @@ namespace MetaFac.Memory
 
         /// <summary>
         /// Wraps the source bytes *without* copying. This assumes the source is immutable.
-        /// If the source is not immutable, use new Block(...) which copies the source.
         /// </summary>
         /// <param name="source"></param>
-        /// <returns></returns>
-        public static Octets UnsafeWrap(ReadOnlyMemory<byte> source) => new Octets(source);
+        /// <returns>The wrapped buffer.</returns>
+        public static Octets UnsafeWrap(ReadOnlyMemory<byte> source)
+        {
+            return source.Length == 0 ? _empty : new Octets(source);
+        }
+
+        /// <summary>
+        /// Wraps the source bytes *without* copying. This assumes the source is immutable.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns>Null if source is null, otherwise the wrapped buffer.</returns>
+        public static Octets? UnsafeWrap(byte[]? source)
+        {
+            return source is null ? null : (source.Length == 0 ? _empty : new Octets(new ReadOnlyMemory<byte>(source)));
+        }
 
         private readonly ReadOnlyMemory<byte> _memory;
         public ReadOnlyMemory<byte> Memory => _memory;

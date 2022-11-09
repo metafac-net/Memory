@@ -22,16 +22,40 @@ namespace MetaFac.Memory.Tests
         }
 
         [Fact]
-        public void Empty()
+        public void Null()
+        {
+            byte[]? bytes = null;
+            Octets? buffer = Octets.UnsafeWrap(bytes);
+            buffer.Should().BeNull();
+        }
+
+        [Fact]
+        public void EmptyA()
         {
             Octets buffer = Octets.Empty;
             buffer.Length.Should().Be(0);
         }
 
         [Fact]
+        public void EmptyB()
+        {
+            Octets? buffer = Octets.UnsafeWrap(ReadOnlyMemory<byte>.Empty);
+            buffer.Length.Should().Be(0);
+            buffer.Should().BeSameAs(Octets.Empty);
+        }
+
+        [Fact]
+        public void EmptyC()
+        {
+            Octets buffer = Octets.UnsafeWrap(new byte[0])!;
+            buffer.Length.Should().Be(0);
+            buffer.Should().BeSameAs(Octets.Empty);
+        }
+
+        [Fact]
         public void EqualityEmpty()
         {
-            Octets buffer1 = Octets.Empty;
+            Octets buffer1 = Octets.UnsafeWrap(new byte[0])!;
             Octets buffer2 = Octets.Empty;
             buffer1.Should().BeSameAs(buffer2);
             buffer1.Equals(buffer2).Should().BeTrue();
