@@ -9,7 +9,8 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-    <Description>An buffer of bytes implemented internally as immutable array ReadOnlyMemory&lt;byte&gt;</Description>
+    <Description>Memory efficient types, including Octets: A reference type that wraps a ReadOnlyMemory&lt;byte&gt;</Description>
+    <Title>MetaFac.Memory</Title>
     <Company>MetaFac</Company>
     <Product>Memory</Product>
     <PackageLicenseUrl></PackageLicenseUrl>
