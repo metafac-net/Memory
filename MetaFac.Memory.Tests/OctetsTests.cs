@@ -22,11 +22,12 @@ namespace MetaFac.Memory.Tests
         }
 
         [Fact]
-        public void Null()
+        public void NullThrows()
         {
-            byte[]? bytes = null;
-            Octets? buffer = Octets.UnsafeWrap(bytes);
-            buffer.Should().BeNull();
+            Assert.ThrowsAny<ArgumentNullException>(() =>
+            {
+                Octets? buffer = Octets.UnsafeWrap(null!);
+            });
         }
 
         [Fact]

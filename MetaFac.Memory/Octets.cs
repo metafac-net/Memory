@@ -28,9 +28,11 @@ namespace MetaFac.Memory
         /// </summary>
         /// <param name="source"></param>
         /// <returns>Null if source is null, otherwise the wrapped buffer.</returns>
-        public static Octets? UnsafeWrap(byte[]? source)
+        public static Octets UnsafeWrap(byte[] source)
         {
-            return source is null ? null : (source.Length == 0 ? _empty : new Octets(new ReadOnlyMemory<byte>(source)));
+            if (source is null) throw new ArgumentNullException(nameof(source));
+
+            return source.Length == 0 ? _empty : new Octets(new ReadOnlyMemory<byte>(source));
         }
 
         private readonly ReadOnlyMemory<byte> _memory;
