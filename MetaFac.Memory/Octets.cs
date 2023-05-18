@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,6 +91,32 @@ namespace MetaFac.Memory
             _hashCodeFunc = new Lazy<int>(CalcHashCode);
         }
 
+        public Octets(ReadOnlySequence<byte> sequence)
+        {
+            if (sequence.IsEmpty)
+            {
+                _memory = ReadOnlyMemory<byte>.Empty;
+            }
+            else if (sequence.IsSingleSegment)
+            {
+                _memory = sequence.First;
+            }
+            else
+            {
+                byte[] buffer = new byte[sequence.Length];
+                Span<byte> span = buffer.AsSpan();
+                int offset = 0;
+                foreach (var segment in sequence)
+                {
+                    Span<byte> target = span.Slice(offset);
+                    segment.Span.CopyTo(target);
+                    offset += segment.Length;
+                }
+                _memory = buffer;
+            }
+            _hashCodeFunc = new Lazy<int>(CalcHashCode);
+        }
+
         public (Octets head, Octets rest) GetHead(int headLength)
         {
             return (
@@ -163,7 +190,7 @@ namespace MetaFac.Memory
                 int result = thisLen;
                 for (int i = 0; i < thisLen; i++)
                 {
-                    result = result * 397 ^ span[i];
+                    result = (result * 397) ^ span[i];
                 }
                 return result;
             }

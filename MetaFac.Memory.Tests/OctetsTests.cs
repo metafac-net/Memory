@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
@@ -51,6 +52,47 @@ namespace MetaFac.Memory.Tests
             Octets buffer = Octets.UnsafeWrap(new byte[0])!;
             buffer.Length.Should().Be(0);
             buffer.Should().BeSameAs(Octets.Empty);
+        }
+
+        [Fact]
+        public void ConstructFromSequence0_Empty()
+        {
+            ReadOnlySequence<byte> sequence = ReadOnlySequence<byte>.Empty;
+            Octets buffer = new Octets(sequence);
+            buffer.Length.Should().Be(0);
+            buffer.Equals(Octets.Empty).Should().BeTrue();
+        }
+
+        [Fact]
+        public void ConstructFromSequence1_SingleSegment()
+        {
+            ReadOnlySequence<byte> sequence = new ReadOnlySequence<byte>(new byte[] { 1, 2, 3, 4, 5 });
+            sequence.IsSingleSegment.Should().BeTrue();
+            Octets buffer1 = new Octets(sequence);
+            Octets buffer2 = new Octets(new byte[] { 1, 2, 3, 4, 5 });
+            buffer1.Equals(buffer2).Should().BeTrue();
+
+            int hash1 = buffer1.GetHashCode();
+            int hash2 = buffer2.GetHashCode();
+            hash2.Should().Be(hash1);
+        }
+
+        [Fact]
+        public void ConstructFromSequence2_MultiSegment()
+        {
+            // todo
+            //ReadOnlySequenceSegment<byte> segment1 = new ReadOnlySequenceSegment<byte>();
+            //ReadOnlySequenceSegment<byte> segment2 = new ReadOnlySequenceSegment<byte>();
+            //ReadOnlySequence<byte> sequence = new ReadOnlySequence<byte>(segment1, 0, segment2, 5);
+            //sequence.IsSingleSegment.Should().BeFalse();
+            ReadOnlySequence<byte> sequence = new ReadOnlySequence<byte>(new byte[] { 1, 2, 3, 4, 5 });
+            Octets buffer1 = new Octets(sequence);
+            Octets buffer2 = new Octets(new byte[] { 1, 2, 3, 4, 5 });
+            buffer1.Equals(buffer2).Should().BeTrue();
+
+            int hash1 = buffer1.GetHashCode();
+            int hash2 = buffer2.GetHashCode();
+            hash2.Should().Be(hash1);
         }
 
         [Fact]
