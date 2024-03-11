@@ -7,7 +7,7 @@ using System.Linq;
 namespace MetaFac.Memory
 {
     /// <summary>
-    /// A reference type that wraps a ReadOnlyMemory<byte> buffer.
+    /// An immutable reference type that wraps a ReadOnlyMemory<byte> buffer.
     /// </summary>
     public sealed class Octets : IEnumerable<byte>, IReadOnlyList<byte>, IEquatable<Octets?>
     {
