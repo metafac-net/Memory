@@ -1,0 +1,101 @@
+﻿namespace MetaFac.Memory
+{
+    public struct BlockB001
+    {
+        public byte UValue;
+        public sbyte Value;
+    }
+    public struct BlockB002
+    {
+        public MetaFac.Memory.BlockB001 A;
+        public MetaFac.Memory.BlockB001 B;
+    }
+    public struct BlockB004
+    {
+        public MetaFac.Memory.BlockB002 A;
+        public MetaFac.Memory.BlockB002 B;
+    }
+    public struct BlockB008
+    {
+        public MetaFac.Memory.BlockB004 A;
+        public MetaFac.Memory.BlockB004 B;
+    }
+    public struct BlockB016
+    {
+        public MetaFac.Memory.BlockB008 A;
+        public MetaFac.Memory.BlockB008 B;
+    }
+    public struct BlockB032
+    {
+        public MetaFac.Memory.BlockB016 A;
+        public MetaFac.Memory.BlockB016 B;
+    }
+    public struct BlockB064
+    {
+        public MetaFac.Memory.BlockB032 A;
+        public MetaFac.Memory.BlockB032 B;
+    }
+    public struct BlockB128
+    {
+        public MetaFac.Memory.BlockB064 A;
+        public MetaFac.Memory.BlockB064 B;
+    }
+    public struct BlockB256
+    {
+        public MetaFac.Memory.BlockB128 A;
+        public MetaFac.Memory.BlockB128 B;
+    }
+    public struct BlockB512
+    {
+        public MetaFac.Memory.BlockB256 A;
+        public MetaFac.Memory.BlockB256 B;
+    }
+    public struct BlockK001
+    {
+        public MetaFac.Memory.BlockB512 A;
+        public MetaFac.Memory.BlockB512 B;
+    }
+    public struct BlockK002
+    {
+        public MetaFac.Memory.BlockK001 A;
+        public MetaFac.Memory.BlockK001 B;
+    }
+    public struct BlockK004
+    {
+        public MetaFac.Memory.BlockK002 A;
+        public MetaFac.Memory.BlockK002 B;
+    }
+    public struct BlockK008
+    {
+        public MetaFac.Memory.BlockK004 A;
+        public MetaFac.Memory.BlockK004 B;
+    }
+    public sealed class Octets : System.Collections.Generic.IEnumerable<byte>, System.Collections.Generic.IReadOnlyCollection<byte>, System.Collections.Generic.IReadOnlyList<byte>, System.Collections.IEnumerable, System.IEquatable<MetaFac.Memory.Octets?>
+    {
+        public Octets(System.Buffers.ReadOnlySequence<byte> sequence) { }
+        public Octets(System.ReadOnlySpan<byte> source) { }
+        public Octets(System.ReadOnlySpan<byte> source1, System.ReadOnlySpan<byte> source2) { }
+        public Octets(System.ReadOnlySpan<byte> source1, System.ReadOnlySpan<byte> source2, System.ReadOnlySpan<byte> source3) { }
+        public int Count { get; }
+        public bool IsEmpty { get; }
+        public byte this[int index] { get; }
+        public int Length { get; }
+        public System.ReadOnlyMemory<byte> Memory { get; }
+        public static MetaFac.Memory.Octets Empty { get; }
+        public bool Equals(MetaFac.Memory.Octets? other) { }
+        public override bool Equals(object? obj) { }
+        public System.Collections.Generic.IEnumerator<byte> GetEnumerator() { }
+        public override int GetHashCode() { }
+        [return: System.Runtime.CompilerServices.TupleElementNames(new string[] {
+                "head",
+                "rest"})]
+        public System.ValueTuple<MetaFac.Memory.Octets, MetaFac.Memory.Octets> GetHead(int headLength) { }
+        [return: System.Runtime.CompilerServices.TupleElementNames(new string[] {
+                "head",
+                "body",
+                "tail"})]
+        public System.ValueTuple<MetaFac.Memory.Octets, MetaFac.Memory.Octets, MetaFac.Memory.Octets> GetHeadTail(int headLength, int bodyLength) { }
+        public static MetaFac.Memory.Octets UnsafeWrap(byte[] source) { }
+        public static MetaFac.Memory.Octets UnsafeWrap(System.ReadOnlyMemory<byte> source) { }
+    }
+}
