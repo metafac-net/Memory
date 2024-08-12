@@ -1,8 +1,8 @@
 #
-# Builds, tests and publishes the FluentModels package
+# Builds, tests and publishes package(s)
 #
 
-name: Memory
+name: Build-Deploy
 
 on:
   push:
