@@ -1,6 +1,6 @@
 # Memory
 
-[![Memory](https://github.com/metafac-net/Memory/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/metafac-net/Memory/actions/workflows/dotnet.yml)
+[![Build-Deploy](https://github.com/metafac-net/Memory/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/metafac-net/Memory/actions/workflows/dotnet.yml)
 
 Memory efficient types:
 - Octets: An immutable reference type that wraps a ReadOnlyMemory<byte> buffer.
