@@ -23,7 +23,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>immutable; buffer</PackageTags>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
-    <Copyright>Copyright (c) 2020-2024 MetaFac</Copyright>
+    <Copyright>Copyright (c) 2020-2025 MetaFac</Copyright>
 	<AssemblyOriginatorKeyFile>..\SigningKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
