@@ -95,7 +95,7 @@
                 "body",
                 "tail"})]
         public System.ValueTuple<MetaFac.Memory.Octets, MetaFac.Memory.Octets, MetaFac.Memory.Octets> GetHeadTail(int headLength, int bodyLength) { }
-        public static MetaFac.Memory.Octets UnsafeWrap(byte[] source) { }
         public static MetaFac.Memory.Octets UnsafeWrap(System.ReadOnlyMemory<byte> source) { }
+        public static MetaFac.Memory.Octets UnsafeWrap(byte[] source) { }
     }
 }

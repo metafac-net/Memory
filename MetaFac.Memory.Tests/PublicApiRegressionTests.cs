@@ -1,8 +1,8 @@
-﻿using FluentAssertions;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Xunit;
 using PublicApiGenerator;
 using VerifyXunit;
+using Shouldly;
 
 namespace MetaFac.Memory.Tests
 {
@@ -11,7 +11,7 @@ namespace MetaFac.Memory.Tests
         [Fact]
         public void VersionCheck()
         {
-            ThisAssembly.AssemblyVersion.Should().Be("2.0.0.0");
+            ThisAssembly.AssemblyVersion.ShouldBe("2.0.0.0");
         }
 
         [Fact]
